@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}{% block title %}Compromisso{% endblock %}
+{% block content %}
+{% set c = comp %}
+<h1>{{ 'Editar compromisso' if c else 'Novo compromisso' }}</h1>
+<form method="post" class="card form">
+  <label class="full">Título*<input name="titulo" required placeholder="Audiência de instrução" value="{{ c.titulo if c else '' }}"></label>
+  <label>Tipo<select name="tipo">{% for t in tipos %}<option {{ 'selected' if c and c.tipo==t }}>{{ t }}</option>{% endfor %}</select></label>
+  <label>Processo<select name="processo_id"><option value="">Nenhum</option>
+    {% for p in processos %}<option value="{{ p.id }}" {{ 'selected' if (c and c.processo_id==p.id) or processo_pre==p.id }}>{{ p.cliente }} · {{ p.numero or 'sem número' }}</option>{% endfor %}</select></label>
+  <label>Data*<input type="date" name="data" required value="{{ c.data if c else '' }}"></label>
+  <label>Hora<input type="time" name="hora" value="{{ c.hora or '' if c else '' }}"></label>
+  <label class="full">Observações<textarea name="observacoes" rows="3">{{ c.observacoes or '' if c else '' }}</textarea></label>
+  <label class="check"><input type="checkbox" name="concluido" {{ 'checked' if c and c.concluido }}> Concluído</label>
+  <div class="full acoes"><button class="btn">Salvar</button><a href="{{ url_for('agenda') }}">Cancelar</a></div>
+</form>
+{% if c %}<form method="post" action="{{ url_for('compromisso_excluir', id=c.id) }}" onsubmit="return confirm('Excluir?')"><button class="btn perigo sm">Excluir</button></form>{% endif %}
+{% endblock %}

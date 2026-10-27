@@ -1,0 +1,23 @@
+{% extends "admin/base.html" %}{% block title %}{{ cliente.nome }}{% endblock %}
+{% block content %}
+<div class="cab"><h1>{{ cliente.nome }}</h1>
+  <div class="acoes"><a class="btn sm" href="{{ url_for('cliente_form', id=cliente.id) }}">Editar</a>
+  <form method="post" action="{{ url_for('cliente_excluir', id=cliente.id) }}" onsubmit="return confirm('Excluir cliente e todos os processos?')"><button class="btn sm perigo">Excluir</button></form></div></div>
+<div class="card dados">
+  <p><span>CPF/CNPJ</span>{{ cliente.cpf_cnpj or '-' }}</p>
+  <p><span>Telefone</span>{{ cliente.telefone or '-' }}</p>
+  <p><span>E-mail</span>{{ cliente.email or '-' }}</p>
+  <p><span>Endereço</span>{{ cliente.endereco or '-' }}</p>
+  <p class="full"><span>Observações</span>{{ cliente.observacoes or '-' }}</p>
+</div>
+<div class="cab"><h2>Processos</h2><a class="btn sm" href="{{ url_for('processo_form', cliente_id=cliente.id) }}">+ Processo</a></div>
+<table class="tab">
+  <thead><tr><th>Número</th><th>Área</th><th>Parte contrária</th><th>Status</th><th>Honorários</th></tr></thead>
+  <tbody>
+  {% for p in processos %}
+    <tr><td><a href="{{ url_for('processo_form', id=p.id) }}"><b>{{ p.numero or 'Sem número' }}</b></a></td><td>{{ p.area or '-' }}</td>
+      <td>{{ p.parte_contraria or '-' }}</td><td><span class="tag">{{ p.status }}</span></td><td>{{ p.honorarios|brl }}</td></tr>
+  {% else %}<tr><td colspan="5" class="vazio">Nenhum processo.</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "admin/base.html" %}{% block title %}Agenda{% endblock %}
+{% block content %}
+<div class="cab"><h1>Agenda</h1><a class="btn" href="{{ url_for('compromisso_form') }}">+ Compromisso</a></div>
+<div class="filtros">
+  <a href="{{ url_for('agenda') }}" class="{{ 'on' if mostrar=='pendentes' }}">Pendentes</a>
+  <a href="{{ url_for('agenda', mostrar='todos') }}" class="{{ 'on' if mostrar=='todos' }}">Todos</a>
+</div>
+<table class="tab">
+  <thead><tr><th></th><th>Data</th><th>Tipo</th><th>Compromisso</th><th>Processo / Cliente</th></tr></thead>
+  <tbody>
+  {% for c in compromissos %}
+    <tr class="{{ 'feito' if c.concluido }} {{ 'atrasado' if not c.concluido and c.data < hoje }}">
+      <td><form method="post" action="{{ url_for('compromisso_concluir', id=c.id) }}"><button class="chk {{ 'ok' if c.concluido }}" title="Concluir"></button></form></td>
+      <td><b>{{ c.data|data_br }}</b> {{ c.hora or '' }}</td><td><span class="tag">{{ c.tipo }}</span></td>
+      <td><a href="{{ url_for('compromisso_form', id=c.id) }}">{{ c.titulo }}</a></td>
+      <td>{% if c.processo_id %}<a href="{{ url_for('processo_form', id=c.processo_id) }}">{{ c.numero or 'processo' }}</a> · {{ c.cliente }}{% else %}-{% endif %}</td></tr>
+  {% else %}<tr><td colspan="5" class="vazio">Nenhum compromisso.</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

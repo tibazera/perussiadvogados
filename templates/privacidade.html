@@ -1,0 +1,18 @@
+{% extends "base_site.html" %}
+{% block title %}Política de privacidade | Perussi Advogados{% endblock %}
+{% block content %}
+<section>
+  <div class="container texto">
+    <h1 class="titulo">Política de privacidade</h1>
+    <p>Esta política explica como o {{ esc.razao }} (CNPJ {{ esc.cnpj }}) trata os dados pessoais enviados por este site, em conformidade com a Lei nº 13.709/2018 (LGPD).</p>
+    <h2>Dados coletados</h2>
+    <p>Nome, telefone, e-mail, assunto e a mensagem que você enviar pelo formulário de contato.</p>
+    <h2>Finalidade</h2>
+    <p>Os dados são usados exclusivamente para retornar o seu contato e, caso você contrate o escritório, para a prestação dos serviços jurídicos. Não vendemos nem compartilhamos seus dados para fins de publicidade.</p>
+    <h2>Armazenamento e sigilo</h2>
+    <p>As informações ficam em sistema interno de acesso restrito e são protegidas pelo sigilo profissional da advocacia.</p>
+    <h2>Seus direitos</h2>
+    <p>Você pode solicitar a qualquer momento acesso, correção ou exclusão dos seus dados pelo e-mail <a href="mailto:{{ esc.email }}">{{ esc.email }}</a>.</p>
+  </div>
+</section>
+{% endblock %}

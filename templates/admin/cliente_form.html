@@ -1,0 +1,13 @@
+{% extends "admin/base.html" %}{% block title %}Cliente{% endblock %}
+{% block content %}
+<h1>{{ 'Editar cliente' if cliente else 'Novo cliente' }}</h1>
+<form method="post" class="card form">
+  <label>Nome*<input name="nome" required value="{{ cliente.nome if cliente else '' }}"></label>
+  <label>CPF/CNPJ<input name="cpf_cnpj" value="{{ cliente.cpf_cnpj or '' if cliente else '' }}"></label>
+  <label>Telefone<input name="telefone" value="{{ cliente.telefone or '' if cliente else '' }}"></label>
+  <label>E-mail<input name="email" type="email" value="{{ cliente.email or '' if cliente else '' }}"></label>
+  <label class="full">Endereço<input name="endereco" value="{{ cliente.endereco or '' if cliente else '' }}"></label>
+  <label class="full">Observações<textarea name="observacoes" rows="4">{{ cliente.observacoes or '' if cliente else '' }}</textarea></label>
+  <div class="full acoes"><button class="btn">Salvar</button><a href="{{ url_for('cliente_detalhe', id=cliente.id) if cliente else url_for('clientes') }}">Cancelar</a></div>
+</form>
+{% endblock %}

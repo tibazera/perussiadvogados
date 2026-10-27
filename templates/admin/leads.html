@@ -1,0 +1,23 @@
+{% extends "admin/base.html" %}{% block title %}Leads{% endblock %}
+{% block content %}
+<div class="cab"><h1>Leads</h1><a class="btn" href="{{ url_for('lead_form') }}">+ Novo lead</a></div>
+<div class="filtros">
+  <a href="{{ url_for('leads') }}" class="{{ 'on' if not filtro }}">Todos</a>
+  {% for s in status_lista %}<a href="{{ url_for('leads', status=s) }}" class="{{ 'on' if filtro==s }}">{{ s }} <small>{{ contagem.get(s, 0) }}</small></a>{% endfor %}
+</div>
+<table class="tab">
+  <thead><tr><th>Nome</th><th>Contato</th><th>Assunto</th><th>Status</th><th>Recebido</th><th></th></tr></thead>
+  <tbody>
+  {% for l in leads %}
+    <tr>
+      <td><a href="{{ url_for('lead_form', id=l.id) }}"><b>{{ l.nome }}</b></a><br><small>{{ (l.mensagem or '')[:80] }}</small></td>
+      <td>{% if l.telefone %}<a href="https://wa.me/55{{ l.telefone|replace(' ','')|replace('(','')|replace(')','')|replace('-','') }}" target="_blank">{{ l.telefone }}</a><br>{% endif %}<small>{{ l.email or '' }}</small></td>
+      <td>{{ l.area or '-' }}</td>
+      <td><span class="tag s-{{ l.status|lower|replace(' ','-') }}">{{ l.status }}</span></td>
+      <td>{{ l.criado_em|data_br }}</td>
+      <td>{% if l.status != 'Virou cliente' %}<form method="post" action="{{ url_for('lead_converter', id=l.id) }}"><button class="btn sm">Virar cliente</button></form>{% endif %}</td>
+    </tr>
+  {% else %}<tr><td colspan="6" class="vazio">Nenhum lead.</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

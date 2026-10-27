@@ -1,0 +1,56 @@
+{% extends "admin/base.html" %}{% block title %}Processo{% endblock %}
+{% block content %}
+{% set p = processo %}
+<h1>{{ (p.numero or 'Processo sem número') if p else 'Novo processo' }}</h1>
+<form method="post" class="card form">
+  <label>Cliente*<select name="cliente_id" required><option value="">Selecione...</option>
+    {% for c in clientes %}<option value="{{ c.id }}" {{ 'selected' if (p and p.cliente_id==c.id) or cliente_pre==c.id }}>{{ c.nome }}</option>{% endfor %}</select></label>
+  <label>Número (CNJ)<input name="numero" placeholder="0000000-00.0000.5.09.0000" value="{{ p.numero or '' if p else '' }}"></label>
+  <label>Área<select name="area">{% for a in areas %}<option {{ 'selected' if p and p.area==a }}>{{ a }}</option>{% endfor %}</select></label>
+  <label>Status<select name="status">{% for s in status_lista %}<option {{ 'selected' if p and p.status==s }}>{{ s }}</option>{% endfor %}</select></label>
+  <label>Parte contrária<input name="parte_contraria" value="{{ p.parte_contraria or '' if p else '' }}"></label>
+  <label>Vara / Tribunal<input name="vara" placeholder="1ª Vara do Trabalho de Londrina" value="{{ p.vara or '' if p else '' }}"></label>
+  <label>Honorários combinados (R$)<input name="honorarios" inputmode="decimal" value="{{ p.honorarios if p and p.honorarios is not none else '' }}"></label>
+  <label>Honorários recebidos (R$)<input name="honorarios_recebidos" inputmode="decimal" value="{{ p.honorarios_recebidos if p and p.honorarios_recebidos else '' }}"></label>
+  <label class="full">Observações<textarea name="observacoes" rows="4">{{ p.observacoes or '' if p else '' }}</textarea></label>
+  <div class="full acoes"><button class="btn">Salvar</button><a href="{{ url_for('processos') }}">Voltar</a></div>
+</form>
+{% if p %}
+<section class="card datajud">
+  <div class="cab">
+    <h2>Datajud (CNJ) {% if p.datajud_novidade %}<span class="tag novo">movimentação nova</span>{% endif %}</h2>
+    <div class="acoes">
+      {% if p.datajud_novidade %}<form method="post" action="{{ url_for('processo_visto', id=p.id) }}"><button class="btn sm claro">Marcar como visto</button></form>{% endif %}
+      <form method="post" action="{{ url_for('processo_datajud', id=p.id) }}"><button class="btn sm" {{ 'disabled' if not p.numero }}>Consultar Datajud</button></form>
+    </div>
+  </div>
+  {% if not p.numero %}<p class="vazio">Informe o número CNJ para consultar.</p>
+  {% elif not dj %}<p class="vazio">Ainda não consultado.</p>
+  {% else %}
+    <div class="dados">
+      <p><span>Tribunal</span>{{ dj.tribunal }} {{ dj.grau or '' }}</p>
+      <p><span>Classe</span>{{ dj.classe or '-' }}</p>
+      <p><span>Órgão julgador</span>{{ dj.orgao or '-' }}</p>
+      <p><span>Ajuizamento</span>{{ dj.ajuizamento|data_br }}</p>
+      <p class="full"><span>Assuntos</span>{{ dj.assuntos|join(', ') or '-' }}</p>
+    </div>
+    <h3>Movimentações</h3>
+    <ol class="timeline">
+      {% for m in dj.movimentos[:30] %}
+        <li><b>{{ m.data|data_br }}</b> {{ m.nome }}{% if m.complemento %} <small>({{ m.complemento }})</small>{% endif %}</li>
+      {% else %}<li class="vazio">Sem movimentações.</li>{% endfor %}
+    </ol>
+    <p class="nota">Consultado em {{ p.datajud_consultado_em|data_br }}. O Datajud pode ter atraso de alguns dias em relação ao tribunal; processos em segredo de justiça não aparecem.</p>
+  {% endif %}
+</section>
+
+<div class="cab"><h2>Audiências e prazos</h2><a class="btn sm" href="{{ url_for('compromisso_form', processo_id=p.id) }}">+ Compromisso</a></div>
+<table class="tab"><tbody>
+  {% for c in compromissos %}
+    <tr class="{{ 'feito' if c.concluido }}"><td>{{ c.data|data_br }} {{ c.hora or '' }}</td><td><span class="tag">{{ c.tipo }}</span></td>
+      <td><a href="{{ url_for('compromisso_form', id=c.id) }}">{{ c.titulo }}</a></td></tr>
+  {% else %}<tr><td class="vazio">Nenhum compromisso.</td></tr>{% endfor %}
+</tbody></table>
+<form method="post" action="{{ url_for('processo_excluir', id=p.id) }}" onsubmit="return confirm('Excluir processo?')"><button class="btn perigo sm">Excluir processo</button></form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "admin/base.html" %}{% block title %}Início{% endblock %}
+{% block content %}
+<h1>Bom dia, Dr. Paulo</h1>
+<div class="stats">
+  <a class="stat" href="{{ url_for('leads', status='Novo') }}"><span>Leads novos</span><b>{{ stats.leads_novos }}</b></a>
+  <a class="stat" href="{{ url_for('clientes') }}"><span>Clientes</span><b>{{ stats.clientes }}</b></a>
+  <a class="stat" href="{{ url_for('processos') }}"><span>Processos ativos</span><b>{{ stats.processos }}</b></a>
+  <div class="stat"><span>Honorários a receber</span><b>{{ stats.a_receber|brl }}</b></div>
+</div>
+{% if movimentados %}
+<section class="card alerta">
+  <h2>Processos com movimentação nova no Datajud</h2>
+  {% for m in movimentados %}<a href="{{ url_for('processo_form', id=m.id) }}">{{ m.numero }} · {{ m.cliente }}</a>{% endfor %}
+</section>
+{% endif %}
+<div class="duas">
+  <section class="card">
+    <div class="cab"><h2>Próximos 7 dias</h2><a class="btn sm" href="{{ url_for('compromisso_form') }}">+ Compromisso</a></div>
+    {% for c in agenda %}
+      <div class="item {{ 'atrasado' if c.data < hoje }}">
+        <form method="post" action="{{ url_for('compromisso_concluir', id=c.id) }}"><button class="chk" title="Concluir"></button></form>
+        <div><b>{{ c.data|data_br }} {{ c.hora or '' }}</b> · <span class="tag">{{ c.tipo }}</span><br>
+          <a href="{{ url_for('compromisso_form', id=c.id) }}">{{ c.titulo }}</a> {% if c.numero %}<small>({{ c.numero }})</small>{% endif %}</div>
+      </div>
+    {% else %}<p class="vazio">Nada agendado.</p>{% endfor %}
+  </section>
+  <section class="card">
+    <div class="cab"><h2>Leads novos</h2><a href="{{ url_for('leads') }}">ver todos</a></div>
+    {% for l in leads %}
+      <div class="item"><div><a href="{{ url_for('lead_form', id=l.id) }}"><b>{{ l.nome }}</b></a> · <span class="tag">{{ l.area or '-' }}</span><br>
+        <small>{{ l.telefone or l.email }} · {{ l.criado_em|data_br }}</small></div></div>
+    {% else %}<p class="vazio">Nenhum lead novo.</p>{% endfor %}
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "admin/base.html" %}{% block title %}Clientes{% endblock %}
+{% block content %}
+<div class="cab"><h1>Clientes</h1><a class="btn" href="{{ url_for('cliente_form') }}">+ Novo cliente</a></div>
+<form class="busca"><input name="q" value="{{ q }}" placeholder="Buscar por nome, CPF/CNPJ ou telefone"><button class="btn sm">Buscar</button></form>
+<table class="tab">
+  <thead><tr><th>Nome</th><th>CPF/CNPJ</th><th>Telefone</th><th>E-mail</th><th>Processos</th></tr></thead>
+  <tbody>
+  {% for c in clientes %}
+    <tr><td><a href="{{ url_for('cliente_detalhe', id=c.id) }}"><b>{{ c.nome }}</b></a></td><td>{{ c.cpf_cnpj or '-' }}</td>
+      <td>{{ c.telefone or '-' }}</td><td>{{ c.email or '-' }}</td><td>{{ c.n_processos }}</td></tr>
+  {% else %}<tr><td colspan="5" class="vazio">Nenhum cliente.</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

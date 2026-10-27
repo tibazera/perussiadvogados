@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Perussi Advogados | Advogado Trabalhista em Londrina - PR{% endblock %}</title>
+  <meta name="description" content="Perussi Advogados: escritório em Londrina - PR com foco em Direito do Trabalho, além de Direito Cível e de Família. Atendimento presencial e on-line.">
+  <meta property="og:title" content="Perussi Advogados | Londrina - PR">
+  <meta property="og:image" content="{{ url_for('static', filename='img/logo-azul.png', _external=True) }}">
+  <link rel="icon" href="{{ url_for('static', filename='img/logo-azul.png') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="topo">
+    <div class="container">
+      <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo-azul.png') }}" alt="Perussi Advogados"></a>
+      <nav>
+        <a href="{{ url_for('home') }}#areas">Áreas de atuação</a>
+        <a href="{{ url_for('home') }}#sobre">O escritório</a>
+        <a href="{{ url_for('home') }}#como">Como funciona</a>
+        <a href="{{ url_for('home') }}#contato">Contato</a>
+      </nav>
+      <a class="btn btn-gold" href="{{ esc.whatsapp_link }}" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <footer>
+    <div class="container">
+      <div>
+        <strong style="color:#fff">{{ esc.nome }}</strong><br>
+        {{ esc.razao }}<br>CNPJ {{ esc.cnpj }}
+      </div>
+      <div>
+        {{ esc.endereco }}<br>{{ esc.cidade }}<br>
+        {{ esc.telefone }} · {{ esc.email }}
+      </div>
+      <div>
+        <a href="{{ esc.instagram }}" target="_blank" rel="noopener">Instagram</a> ·
+        <a href="{{ esc.facebook }}" target="_blank" rel="noopener">Facebook</a><br>
+        <a href="{{ url_for('privacidade') }}">Política de privacidade</a><br>
+        © {{ ano }} {{ esc.nome }}
+      </div>
+    </div>
+  </footer>
+
+  <a class="whats-float" href="{{ esc.whatsapp_link }}" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+  </a>
+</body>
+</html>

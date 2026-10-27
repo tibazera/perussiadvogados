@@ -1,0 +1,21 @@
+{% extends "admin/base.html" %}{% block title %}Lead{% endblock %}
+{% block content %}
+<h1>{{ lead.nome if lead else 'Novo lead' }}</h1>
+<form method="post" class="card form">
+  <label>Nome*<input name="nome" required value="{{ lead.nome if lead else '' }}"></label>
+  <label>Telefone<input name="telefone" value="{{ lead.telefone or '' if lead else '' }}"></label>
+  <label>E-mail<input name="email" type="email" value="{{ lead.email or '' if lead else '' }}"></label>
+  <label>Assunto<select name="area">{% for a in areas %}<option {{ 'selected' if lead and lead.area==a }}>{{ a }}</option>{% endfor %}</select></label>
+  <label>Origem<select name="origem">{% for o in ['Site','WhatsApp','Instagram','Indicação','Telefone','Outro'] %}<option {{ 'selected' if lead and lead.origem==o }}>{{ o }}</option>{% endfor %}</select></label>
+  <label>Status<select name="status">{% for s in status_lista %}<option {{ 'selected' if lead and lead.status==s }}>{{ s }}</option>{% endfor %}</select></label>
+  <label class="full">Mensagem<textarea name="mensagem" rows="4">{{ lead.mensagem or '' if lead else '' }}</textarea></label>
+  <label class="full">Observações internas<textarea name="observacoes" rows="3">{{ lead.observacoes or '' if lead else '' }}</textarea></label>
+  <div class="full acoes"><button class="btn">Salvar</button><a href="{{ url_for('leads') }}">Cancelar</a></div>
+</form>
+{% if lead %}
+<div class="acoes">
+  {% if lead.status != 'Virou cliente' %}<form method="post" action="{{ url_for('lead_converter', id=lead.id) }}"><button class="btn">Converter em cliente</button></form>{% endif %}
+  <form method="post" action="{{ url_for('lead_excluir', id=lead.id) }}" onsubmit="return confirm('Excluir este lead?')"><button class="btn perigo">Excluir</button></form>
+</div>
+{% endif %}
+{% endblock %}
