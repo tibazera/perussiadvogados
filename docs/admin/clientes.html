@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Clientes | Perussi Advogados</title>
+  <link rel="stylesheet" href="../static/css/admin.css">
+</head>
+<body>
+
+<header class="bar">
+  <a href="../admin/index.html" class="marca"><img src="../static/img/logo-azul.png" alt=""> CRM</a>
+  <nav>
+    
+    <a href="../admin/index.html" class="">Início</a>
+    <a href="../admin/leads.html" class="">Leads</a>
+    <a href="../admin/clientes.html" class="on">Clientes</a>
+    <a href="../admin/processos.html" class="">Processos</a>
+    <a href="../admin/agenda.html" class="">Agenda</a>
+  </nav>
+  <div class="dir">
+    <a href="../index.html" target="_blank">Ver site</a>
+    <form method="post" action="#"><button class="link">Sair</button></form>
+  </div>
+</header>
+
+<main class="wrap">
+  
+  
+<div class="cab"><h1>Clientes</h1><a class="btn" href="#">+ Novo cliente</a></div>
+<form class="busca"><input name="q" value="" placeholder="Buscar por nome, CPF/CNPJ ou telefone"><button class="btn sm">Buscar</button></form>
+<table class="tab">
+  <thead><tr><th>Nome</th><th>CPF/CNPJ</th><th>Telefone</th><th>E-mail</th><th>Processos</th></tr></thead>
+  <tbody>
+  
+    <tr><td><a href="../admin/cliente-1.html"><b>Carla Regina Martins</b></a></td><td>123.456.789-00</td>
+      <td>(43) 99654-3210</td><td>carla@email.com</td><td>1</td></tr>
+  
+    <tr><td><a href="#"><b>Luciana Ferreira</b></a></td><td>456.789.123-00</td>
+      <td>(43) 99543-2109</td><td>luciana@email.com</td><td>1</td></tr>
+  
+    <tr><td><a href="#"><b>Pedro Henrique Alves</b></a></td><td>987.654.321-00</td>
+      <td>(43) 98877-6655</td><td>-</td><td>1</td></tr>
+  
+  </tbody>
+</table>
+
+</main>
+<style>.whats-float{bottom:64px!important}</style><div style="position:fixed;left:0;right:0;bottom:0;z-index:99;background:#c9a45c;color:#0f1f3a;
+text-align:center;padding:8px 12px;font:600 13px system-ui">Versão de demonstração · dados fictícios · botões desativados</div>
+<script>document.addEventListener('submit',function(e){e.preventDefault();
+if(e.target.querySelector('[name=senha]')){location.href='index.html';return;}
+alert('Demonstração: na versão final esta ação é salva no sistema.');});</script></body>
+</html>

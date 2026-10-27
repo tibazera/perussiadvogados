@@ -25,3 +25,7 @@ Coloque a foto em `static/img/paulo.jpg` (ou .png/.webp), de preferência vertic
 
 ## Produção
 `gunicorn app:app`. Use um servidor com disco persistente (Render, Railway, VPS) porque o banco é SQLite em `instance/crm.db`, e faça backup desse arquivo.
+
+## Versão de demonstração (estática)
+`python scripts/gerar_demo.py` gera em `docs/` o site + CRM com dados fictícios, sem servidor.
+Para publicar: GitHub → Settings → Pages → *Deploy from a branch* → escolha o branch e a pasta `/docs`.

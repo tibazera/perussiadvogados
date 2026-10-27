@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Processo | Perussi Advogados</title>
+  <link rel="stylesheet" href="../static/css/admin.css">
+</head>
+<body>
+
+<header class="bar">
+  <a href="../admin/index.html" class="marca"><img src="../static/img/logo-azul.png" alt=""> CRM</a>
+  <nav>
+    
+    <a href="../admin/index.html" class="">Início</a>
+    <a href="../admin/leads.html" class="">Leads</a>
+    <a href="../admin/clientes.html" class="">Clientes</a>
+    <a href="../admin/processos.html" class="on">Processos</a>
+    <a href="../admin/agenda.html" class="">Agenda</a>
+  </nav>
+  <div class="dir">
+    <a href="../index.html" target="_blank">Ver site</a>
+    <form method="post" action="#"><button class="link">Sair</button></form>
+  </div>
+</header>
+
+<main class="wrap">
+  
+  
+
+<h1>0000412-18.2025.5.09.0018</h1>
+<form method="post" class="card form">
+  <label>Cliente*<select name="cliente_id" required><option value="">Selecione...</option>
+    <option value="1" selected>Carla Regina Martins</option><option value="3" >Luciana Ferreira</option><option value="2" >Pedro Henrique Alves</option></select></label>
+  <label>Número (CNJ)<input name="numero" placeholder="0000000-00.0000.5.09.0000" value="0000412-18.2025.5.09.0018"></label>
+  <label>Área<select name="area"><option selected>Trabalhista</option><option >Cível</option><option >Família</option><option >Outra</option></select></label>
+  <label>Status<select name="status"><option selected>Em andamento</option><option >Suspenso</option><option >Acordo</option><option >Sentença</option><option >Recurso</option><option >Arquivado</option></select></label>
+  <label>Parte contrária<input name="parte_contraria" value="Supermercados Exemplo Ltda"></label>
+  <label>Vara / Tribunal<input name="vara" placeholder="1ª Vara do Trabalho de Londrina" value="1ª Vara do Trabalho de Londrina"></label>
+  <label>Honorários combinados (R$)<input name="honorarios" inputmode="decimal" value="8000.0"></label>
+  <label>Honorários recebidos (R$)<input name="honorarios_recebidos" inputmode="decimal" value="2000.0"></label>
+  <label class="full">Observações<textarea name="observacoes" rows="4"></textarea></label>
+  <div class="full acoes"><button class="btn">Salvar</button><a href="../admin/processos.html">Voltar</a></div>
+</form>
+
+<section class="card datajud">
+  <div class="cab">
+    <h2>Datajud (CNJ) <span class="tag novo">movimentação nova</span></h2>
+    <div class="acoes">
+      <form method="post" action="#"><button class="btn sm claro">Marcar como visto</button></form>
+      <form method="post" action="#"><button class="btn sm" >Consultar Datajud</button></form>
+    </div>
+  </div>
+  
+    <div class="dados">
+      <p><span>Tribunal</span>TRT9 G1</p>
+      <p><span>Classe</span>Ação Trabalhista - Rito Ordinário</p>
+      <p><span>Órgão julgador</span>1ª VARA DO TRABALHO DE LONDRINA</p>
+      <p><span>Ajuizamento</span>10/03/2025</p>
+      <p class="full"><span>Assuntos</span>Horas Extras, Verbas Rescisórias</p>
+    </div>
+    <h3>Movimentações</h3>
+    <ol class="timeline">
+      
+        <li><b>25/10/2026 14:32</b> Designada audiência de instrução</li>
+      
+        <li><b>27/09/2026 09:10</b> Juntada de petição <small>(Réplica)</small></li>
+      
+        <li><b>28/08/2026 16:00</b> Audiência inicial realizada <small>(sem acordo)</small></li>
+      
+        <li><b>10/03/2025 08:00</b> Distribuído por sorteio</li>
+      
+    </ol>
+    <p class="nota">Consultado em 27/10/2026 08:00. O Datajud pode ter atraso de alguns dias em relação ao tribunal; processos em segredo de justiça não aparecem.</p>
+  
+</section>
+
+<div class="cab"><h2>Audiências e prazos</h2><a class="btn sm" href="#">+ Compromisso</a></div>
+<table class="tab"><tbody>
+  
+    <tr class=""><td>30/10/2026 14:30</td><td><span class="tag">Audiência</span></td>
+      <td><a href="#">Audiência de instrução</a></td></tr>
+  
+    <tr class=""><td>01/11/2026 </td><td><span class="tag">Tarefa</span></td>
+      <td><a href="#">Enviar documentos para cálculo</a></td></tr>
+  
+</tbody></table>
+<form method="post" action="#" onsubmit="return confirm('Excluir processo?')"><button class="btn perigo sm">Excluir processo</button></form>
+
+
+</main>
+<style>.whats-float{bottom:64px!important}</style><div style="position:fixed;left:0;right:0;bottom:0;z-index:99;background:#c9a45c;color:#0f1f3a;
+text-align:center;padding:8px 12px;font:600 13px system-ui">Versão de demonstração · dados fictícios · botões desativados</div>
+<script>document.addEventListener('submit',function(e){e.preventDefault();
+if(e.target.querySelector('[name=senha]')){location.href='index.html';return;}
+alert('Demonstração: na versão final esta ação é salva no sistema.');});</script></body>
+</html>

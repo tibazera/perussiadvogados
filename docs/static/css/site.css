@@ -1,0 +1,105 @@
+:root {
+  --navy: #0f1f3a;
+  --navy-2: #172a4d;
+  --gold: #c9a45c;
+  --gold-2: #e3c88f;
+  --cream: #f7f3ea;
+  --ink: #1e2430;
+  --muted: #5d6576;
+  --white: #fff;
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--cream); line-height: 1.6; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+.container { width: min(1120px, 100% - 32px); margin-inline: auto; }
+
+/* header */
+.topo { position: sticky; top: 0; z-index: 10; background: var(--navy); border-bottom: 1px solid rgba(201,164,92,.35); }
+.topo .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+.topo img { height: 52px; width: auto; }
+.topo nav { display: flex; gap: 28px; }
+.topo nav a { color: var(--cream); text-decoration: none; font-size: .95rem; letter-spacing: .02em; }
+.topo nav a:hover { color: var(--gold-2); }
+.btn { display: inline-block; padding: 12px 26px; border-radius: 2px; font-weight: 600; text-decoration: none;
+  border: 1px solid var(--gold); cursor: pointer; font: inherit; font-weight: 600; }
+.btn-gold { background: var(--gold); color: var(--navy); }
+.btn-gold:hover { background: var(--gold-2); }
+.btn-outline { color: var(--gold-2); background: transparent; }
+.btn-outline:hover { background: rgba(201,164,92,.12); }
+
+/* hero */
+.hero { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%); color: var(--cream); padding: 110px 0 120px; }
+.hero .eyebrow { color: var(--gold); letter-spacing: .3em; text-transform: uppercase; font-size: .8rem; margin: 0 0 18px; }
+.hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.1; margin: 0 0 22px; max-width: 760px; }
+.hero p.lead { font-size: 1.15rem; max-width: 600px; color: #d9dce4; margin: 0 0 36px; }
+.hero .acoes { display: flex; flex-wrap: wrap; gap: 14px; }
+.filete { width: 72px; height: 2px; background: var(--gold); margin: 0 0 26px; }
+
+/* sections */
+section { padding: 90px 0; }
+.titulo { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--navy); margin: 0 0 12px; font-weight: 600; }
+.sub { color: var(--muted); max-width: 640px; margin: 0 0 48px; }
+.areas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.area { background: var(--white); padding: 36px 30px; border-top: 3px solid var(--gold); box-shadow: 0 8px 30px rgba(15,31,58,.06); }
+.area.destaque { background: var(--navy); color: var(--cream); }
+.area.destaque h3 { color: var(--gold-2); }
+.area h3 { font-family: var(--serif); font-size: 1.6rem; margin: 0 0 12px; color: var(--navy); }
+.area ul { padding-left: 18px; margin: 14px 0 0; }
+.area li { margin-bottom: 4px; }
+
+.sobre { background: var(--white); }
+.sobre-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+.foto-paulo { margin: 0; position: relative; }
+.foto-paulo img { width: 100%; aspect-ratio: 616/817; object-fit: cover; object-position: top; border: 1px solid rgba(201,164,92,.5); box-shadow: 18px 18px 0 var(--navy); }
+.foto-paulo figcaption { margin-top: 30px; font-family: var(--serif); font-size: 1.35rem; color: var(--navy); }
+.foto-paulo figcaption span { display: block; font-family: var(--sans); font-size: .85rem; color: var(--muted); letter-spacing: .05em; }
+.eyebrow-escuro { color: var(--gold); letter-spacing: .3em; text-transform: uppercase; font-size: .8rem; margin: 0 0 8px; font-weight: 600; }
+
+.passos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; counter-reset: passo; }
+.passo { position: relative; padding-top: 56px; }
+.passo::before { counter-increment: passo; content: "0" counter(passo); position: absolute; top: 0; left: 0;
+  font-family: var(--serif); font-size: 2.6rem; color: var(--gold); line-height: 1; }
+.passo h4 { margin: 0 0 6px; color: var(--navy); font-size: 1.1rem; }
+
+/* contato */
+.contato { background: var(--navy); color: var(--cream); }
+.contato .titulo { color: var(--cream); }
+.contato .sub { color: #c4c9d4; }
+.contato-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 50px; }
+.info p { margin: 0 0 18px; }
+.info strong { display: block; color: var(--gold-2); font-size: .8rem; letter-spacing: .15em; text-transform: uppercase; }
+.info a { text-decoration: none; }
+form.lead-form { background: var(--white); color: var(--ink); padding: 34px; display: grid; gap: 14px; }
+form.lead-form label { font-size: .85rem; font-weight: 600; color: var(--navy); display: grid; gap: 6px; }
+form.lead-form input, form.lead-form select, form.lead-form textarea {
+  font: inherit; padding: 11px 12px; border: 1px solid #cfd3db; border-radius: 2px; background: #fff; width: 100%; }
+form.lead-form .check { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; color: var(--muted); }
+form.lead-form .check input { width: auto; margin-top: 4px; }
+.hp { position: absolute; left: -9999px; }
+.mapa { margin-top: 26px; border: 0; width: 100%; height: 240px; filter: grayscale(.3); }
+.flash { padding: 12px 14px; margin-bottom: 4px; font-size: .95rem; }
+.flash.ok { background: #e6f2e8; color: #1f5a2c; }
+.flash.erro { background: #fbe9e7; color: #8a2a1d; }
+
+footer { background: #0a1529; color: #9aa3b5; padding: 40px 0; font-size: .88rem; }
+footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; }
+footer a { color: var(--gold-2); }
+
+.whats-float { position: fixed; right: 20px; bottom: 20px; width: 58px; height: 58px; border-radius: 50%;
+  background: #25d366; display: grid; place-items: center; box-shadow: 0 6px 20px rgba(0,0,0,.25); z-index: 20; }
+.whats-float svg { width: 30px; height: 30px; fill: #fff; }
+
+.texto { max-width: 780px; }
+.texto h2 { font-family: var(--serif); color: var(--navy); }
+
+@media (max-width: 860px) {
+  .topo nav { display: none; }
+  .sobre-grid, .contato-grid { grid-template-columns: 1fr; gap: 36px; }
+  .hero { padding: 80px 0; }
+  section { padding: 64px 0; }
+}
+.foto-paulo img.sem-foto { object-fit: contain; background: #000; }
