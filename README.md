@@ -13,7 +13,7 @@ Site institucional do escritório Perussi Advogados (Londrina - PR) com um CRM b
 ## Rodar localmente
 ```bash
 pip install -r requirements.txt
-ADMIN_PASSWORD=minhasenha OAB_NUMERO=00.000 python app.py
+ADMIN_PASSWORD=minhasenha python app.py
 ```
 Acesse http://localhost:5000 e http://localhost:5000/admin (usuário `paulo`).
 

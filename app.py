@@ -26,7 +26,7 @@ ESCRITORIO = {
     "razao": "Paulo Henrique Gomes Perussi Sociedade Individual de Advocacia",
     "cnpj": "28.702.146/0001-06",
     "advogado": "Paulo Henrique Gomes Perussi",
-    "oab": os.environ.get("OAB_NUMERO", "[número]"),
+    "oab": os.environ.get("OAB_NUMERO", "75.627"),
     "endereco": "Rua Senador Souza Naves, 626, 4º andar, sala 45, Centro",
     "cidade": "Londrina - PR, CEP 86010-160",
     "telefone": "(43) 3039-1839",
