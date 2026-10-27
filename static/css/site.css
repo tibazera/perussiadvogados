@@ -54,7 +54,7 @@ section { padding: 90px 0; }
 .sobre { background: var(--white); }
 .sobre-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
 .foto-paulo { margin: 0; position: relative; }
-.foto-paulo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border: 1px solid rgba(201,164,92,.5); box-shadow: 18px 18px 0 var(--navy); }
+.foto-paulo img { width: 100%; aspect-ratio: 616/817; object-fit: cover; object-position: top; border: 1px solid rgba(201,164,92,.5); box-shadow: 18px 18px 0 var(--navy); }
 .foto-paulo figcaption { margin-top: 30px; font-family: var(--serif); font-size: 1.35rem; color: var(--navy); }
 .foto-paulo figcaption span { display: block; font-family: var(--sans); font-size: .85rem; color: var(--muted); letter-spacing: .05em; }
 .eyebrow-escuro { color: var(--gold); letter-spacing: .3em; text-transform: uppercase; font-size: .8rem; margin: 0 0 8px; font-weight: 600; }
