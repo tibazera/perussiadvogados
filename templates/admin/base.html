@@ -10,7 +10,7 @@
 <body>
 {% if session.admin %}
 <header class="bar">
-  <a href="{{ url_for('dashboard') }}" class="marca"><img src="{{ url_for('static', filename='img/logo-azul.png') }}" alt=""> CRM</a>
+  <a href="{{ url_for('dashboard') }}" class="marca"><img src="{{ url_for('static', filename='img/logo-branco.png') }}" alt=""> CRM</a>
   <nav>
     {% set ep = request.endpoint or '' %}
     <a href="{{ url_for('dashboard') }}" class="{{ 'on' if ep=='dashboard' }}">Início</a>

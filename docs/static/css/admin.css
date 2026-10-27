@@ -7,7 +7,7 @@ h2 { font-size:1.1rem; margin:0; color:var(--navy); }
 h3 { font-size:1rem; margin:20px 0 8px; }
 .bar { background:var(--navy); color:#fff; display:flex; align-items:center; gap:24px; padding:0 20px; height:60px; flex-wrap:wrap; }
 .bar .marca { display:flex; align-items:center; gap:8px; color:var(--gold); text-decoration:none; font-weight:700; }
-.bar .marca img { height:38px; }
+.bar .marca img { height:30px; }
 .bar nav { display:flex; gap:4px; flex:1; overflow-x:auto; }
 .bar nav a { color:#d7dbe4; text-decoration:none; padding:8px 12px; border-radius:6px; white-space:nowrap; }
 .bar nav a.on, .bar nav a:hover { background:rgba(255,255,255,.1); color:#fff; }
