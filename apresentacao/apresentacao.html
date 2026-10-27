@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Perussi Advogados: site e sistema</title>
+<style>
+@font-face { font-family: "Caslon Display"; src: url("../static/fonts/libre-caslon-display-latin-400-normal.woff2"); }
+@font-face { font-family: "Caslon Text"; src: url("../static/fonts/libre-caslon-text-latin-400-italic.woff2"); font-style: italic; }
+@font-face { font-family: "Source Sans 3"; src: url("../static/fonts/source-sans-3-latin-400-normal.woff2"); font-weight: 400; }
+@font-face { font-family: "Source Sans 3"; src: url("../static/fonts/source-sans-3-latin-600-normal.woff2"); font-weight: 600; }
+@font-face { font-family: "Source Sans 3"; src: url("../static/fonts/source-sans-3-latin-700-normal.woff2"); font-weight: 700; }
+@page { size: A4; margin: 0; }
+:root { --navy:#0f1f3a; --deep:#0a1629; --gold:#b8955a; --gold-l:#d9bf8c; --gold-ink:#85652f; --text:#3b4456; --muted:#646d7e; --line:#dfe2e8; --mist:#f3f5f8; }
+* { box-sizing: border-box; }
+body { margin: 0; font: 400 10.5pt/1.55 "Source Sans 3", sans-serif; color: var(--text); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.pg { width: 210mm; height: 297mm; padding: 18mm 18mm 16mm; position: relative; page-break-after: always; overflow: hidden; }
+.pg:last-child { page-break-after: auto; }
+h1, h2, h3 { font-family: "Caslon Display", Georgia, serif; font-weight: 400; color: var(--navy); margin: 0; line-height: 1.1; }
+h2 { font-size: 26pt; margin-bottom: 4mm; }
+h3 { font-size: 14pt; margin: 0 0 1.5mm; }
+p { margin: 0 0 3mm; }
+.lead { font-size: 12pt; color: var(--muted); max-width: 150mm; margin-bottom: 7mm; }
+.shot { width: 100%; display: block; border: 1px solid var(--line); box-shadow: 0 6px 18px -10px rgba(15,31,58,.45); }
+.cap { font-size: 9pt; color: var(--muted); margin-top: 2mm; }
+.rodape { position: absolute; left: 18mm; right: 18mm; bottom: 9mm; display: flex; justify-content: space-between; font-size: 8pt; color: var(--muted); border-top: 1px solid var(--line); padding-top: 3mm; }
+.duas { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; }
+.lista { list-style: none; padding: 0; margin: 0; }
+.lista li { padding: 2.2mm 0 2.2mm 6mm; border-bottom: 1px solid var(--line); position: relative; }
+.lista li::before { content: ""; position: absolute; left: 0; top: 4.6mm; width: 3mm; height: 1px; background: var(--gold); }
+.lista strong { color: var(--navy); }
+.sec { margin-top: 7mm; }
+
+/* capa */
+.capa { background: var(--navy); color: #e8ecf3; display: flex; flex-direction: column; padding: 24mm 20mm; }
+.capa img.logo { width: 92mm; }
+.capa .fio { width: 18mm; height: 1px; background: var(--gold); margin: 40mm 0 8mm; }
+.capa h1 { color: #fff; font-size: 40pt; line-height: 1.05; }
+.capa h1 span { color: var(--gold-l); }
+.capa .sub { font-size: 13pt; color: #a9b4c7; margin-top: 8mm; max-width: 140mm; }
+.capa .itens { margin-top: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; border-top: 1px solid rgba(255,255,255,.15); padding-top: 7mm; }
+.capa .itens b { display: block; font-family: "Caslon Display", serif; font-weight: 400; color: #fff; font-size: 15pt; margin-bottom: 1mm; }
+.capa .itens span { font-size: 9.5pt; color: #a9b4c7; }
+
+.mob { display: grid; grid-template-columns: 62mm 1fr; gap: 9mm; align-items: start; }
+.mob img { width: 62mm; border-radius: 5mm; border: 2.5mm solid var(--deep); box-shadow: 0 10px 24px -12px rgba(0,0,0,.5); }
+
+.fluxo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin: 4mm 0 7mm; }
+.fluxo div { border-top: 1px solid var(--navy); padding-top: 3mm; font-size: 9.5pt; }
+.fluxo b { display: block; font-family: "Caslon Display", serif; font-weight: 400; color: var(--gold-ink); font-size: 16pt; }
+.fluxo strong { color: var(--navy); display: block; }
+
+.final { background: var(--mist); }
+.final .caixa { background: var(--navy); color: #e8ecf3; padding: 9mm 10mm; margin-top: 8mm; }
+.final .caixa h3 { color: #fff; font-size: 17pt; margin-bottom: 3mm; }
+.final .caixa a { color: var(--gold-l); }
+.prox { columns: 2; column-gap: 8mm; }
+.prox li { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<section class="pg capa">
+  <img class="logo" src="../static/img/logo-branco.png" alt="Perussi Advogados">
+  <div class="fio"></div>
+  <h1>Seu escritório na internet <span>e organizado</span> em um só lugar.</h1>
+  <p class="sub">Apresentação do novo site do Perussi Advogados e do sistema de gestão de clientes e processos, feito sob medida para o Dr. Paulo Perussi.</p>
+  <div class="itens">
+    <div><b>Site profissional</b><span>Para ser encontrado no Google e receber contatos pelo WhatsApp.</span></div>
+    <div><b>Gestão de clientes</b><span>Do primeiro contato ao cliente, sem perder nenhum.</span></div>
+    <div><b>Processos e agenda</b><span>Movimentações do Datajud (CNJ), prazos e audiências.</span></div>
+  </div>
+</section>
+
+<section class="pg">
+  <h2>O site</h2>
+  <p class="lead">Logo em destaque, visual sóbrio de escritório e um caminho curto até o WhatsApp. A primeira tela já pergunta qual é a situação do visitante.</p>
+  <img class="shot" src="img/hero.jpg" alt="Abertura do site">
+  <p class="cap">Primeira tela do site no computador.</p>
+  <div class="duas sec">
+    <div>
+      <h3>"Qual é a sua situação?"</h3>
+      <p>O visitante escolhe o assunto (demissão, horas extras ou falta de registro, família ou cível) e o WhatsApp abre com a mensagem pronta. O contato chega já dizendo do que se trata.</p>
+    </div>
+    <div>
+      <h3>Credibilidade à vista</h3>
+      <p>Nome e OAB/PR 75.627 em destaque, endereço no centro de Londrina, horário de atendimento e atendimento presencial e on-line, como pede o Provimento 205/2021 da OAB.</p>
+    </div>
+  </div>
+  <div class="rodape"><span>Perussi Advogados · Site e sistema</span><span>2</span></div>
+</section>
+
+<section class="pg">
+  <h2>Quem atende e o que faz</h2>
+  <p class="lead">O cliente quer saber com quem vai falar. O site mostra o Dr. Paulo e deixa claras as áreas de atuação.</p>
+  <img class="shot" src="img/quem.jpg" alt="Seção Quem sou" style="height:112mm;object-fit:cover;object-position:center">
+  <p class="cap">Seção "Quem sou", com foto, OAB e apresentação.</p>
+  <img class="shot sec" src="img/areas.jpg" alt="Áreas de atuação" style="height:78mm;object-fit:cover;object-position:top">
+  <p class="cap">Áreas de atuação: Direito do Trabalho (foco do escritório), Família e Cível.</p>
+  <div class="rodape"><span>Perussi Advogados · Site e sistema</span><span>3</span></div>
+</section>
+
+<section class="pg">
+  <h2>Informação que gera confiança</h2>
+  <p class="lead">Dúvidas frequentes respondidas no próprio site e todos os canais de contato em um só lugar.</p>
+  <img class="shot" src="img/duvidas.jpg" alt="Dúvidas frequentes" >
+  <p class="cap">Dúvidas frequentes: prazo da ação trabalhista, documentos, trabalho sem carteira e atendimento on-line.</p>
+  <img class="shot sec" src="img/contato.jpg" alt="Contato" style="height:100mm;object-fit:cover;object-position:top">
+  <p class="cap">Contato: WhatsApp, telefone, e-mail, endereço com mapa e formulário que alimenta o sistema.</p>
+  <div class="rodape"><span>Perussi Advogados · Site e sistema</span><span>4</span></div>
+</section>
+
+<section class="pg">
+  <h2>Feito para o celular</h2>
+  <p class="lead">A maioria dos clientes vai acessar pelo telefone. O site se adapta a qualquer tela.</p>
+  <div class="mob">
+    <img src="img/mobile.jpg" alt="Site no celular">
+    <div>
+      <h3>O que vem incluso no site</h3>
+      <ul class="lista">
+        <li><strong>Botão de WhatsApp</strong> sempre visível, em todas as telas.</li>
+        <li><strong>Pronto para o Google:</strong> título, descrição e ficha de escritório de advocacia em Londrina para a busca local.</li>
+        <li><strong>Formulário de contato</strong> com proteção contra spam, que cai direto no sistema.</li>
+        <li><strong>LGPD:</strong> política de privacidade e consentimento no formulário.</li>
+        <li><strong>Regras da OAB:</strong> nome e inscrição visíveis, sem promessa de resultado.</li>
+        <li><strong>Carregamento rápido</strong> e fontes próprias, sem depender de serviços externos.</li>
+        <li><strong>Links</strong> para Instagram e Facebook do escritório.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="rodape"><span>Perussi Advogados · Site e sistema</span><span>5</span></div>
+</section>
+
+<section class="pg">
+  <h2>O sistema: visão geral</h2>
+  <p class="lead">Uma área restrita, com login e senha, onde o Dr. Paulo acompanha tudo o que importa no dia.</p>
+  <img class="shot" src="img/crm-painel.jpg" alt="Painel do sistema">
+  <p class="cap">Painel inicial (dados fictícios de demonstração).</p>
+  <ul class="lista sec">
+    <li><strong>Números do escritório:</strong> contatos novos, clientes, processos ativos e honorários a receber.</li>
+    <li><strong>Aviso de movimentação nova</strong> nos processos acompanhados pelo Datajud.</li>
+    <li><strong>Próximos 7 dias:</strong> audiências, prazos e tarefas, com os atrasados em vermelho.</li>
+  </ul>
+  <div class="rodape"><span>Perussi Advogados · Site e sistema</span><span>6</span></div>
+</section>
+
+<section class="pg">
+  <h2>Do contato ao cliente</h2>
+  <p class="lead">Quem preenche o formulário do site entra automaticamente no sistema. Nenhum contato se perde.</p>
+  <div class="fluxo">
+    <div><b>1</b><strong>Novo</strong>O contato chega pelo site, ou é cadastrado à mão (WhatsApp, Instagram, indicação).</div>
+    <div><b>2</b><strong>Em contato</strong>Um clique abre a conversa no WhatsApp.</div>
+    <div><b>3</b><strong>Consulta agendada</strong>Acompanhamento de cada etapa.</div>
+    <div><b>4</b><strong>Virou cliente</strong>Um clique transforma o contato em cliente, com os dados já preenchidos.</div>
+  </div>
+  <img class="shot" src="img/crm-leads.jpg" alt="Lista de contatos">
+  <p class="cap">Contatos organizados por etapa, com origem, assunto e data.</p>
+  <ul class="lista sec">
+    <li><strong>Cadastro de clientes</strong> com CPF/CNPJ, contatos, endereço e observações.</li>
+    <li><strong>Busca</strong> por nome, CPF ou telefone.</li>
+    <li><strong>Todos os processos</strong> de cada cliente na mesma tela.</li>
+  </ul>
+  <div class="rodape"><span>Perussi Advogados · Site e sistema</span><span>7</span></div>
+</section>
+
+<section class="pg">
+  <h2>Processos com Datajud</h2>
+  <p class="lead">O sistema consulta a base pública do CNJ pelo número do processo e mostra as movimentações em uma linha do tempo.</p>
+  <img class="shot" src="img/crm-datajud.jpg" alt="Processo com Datajud">
+  <p class="cap">Tela do processo: dados do tribunal e movimentações (dados fictícios de demonstração).</p>
+  <ul class="lista sec">
+    <li><strong>Identifica o tribunal sozinho</strong> pelo número CNJ (TRT9, TJPR, TRF e outros).</li>
+    <li><strong>Classe, vara, assuntos e data de ajuizamento</strong> trazidos automaticamente.</li>
+    <li><strong>"Atualizar todos":</strong> consulta todos os processos ativos de uma vez e marca os que tiveram novidade.</li>
+    <li><strong>Honorários</strong> combinados e recebidos por processo, com total a receber no painel.</li>
+  </ul>
+  <div class="rodape"><span>Perussi Advogados · Site e sistema</span><span>8</span></div>
+</section>
+
+<section class="pg">
+  <h2>Agenda de prazos e audiências</h2>
+  <p class="lead">Compromissos ligados aos processos, para não perder nenhuma data.</p>
+  <img class="shot" src="img/crm-agenda.jpg" alt="Agenda">
+  <p class="cap">Agenda com audiências, prazos, reuniões e tarefas.</p>
+  <ul class="lista sec">
+    <li><strong>Quatro tipos:</strong> audiência, prazo, reunião e tarefa.</li>
+    <li><strong>Atrasados em destaque</strong> e marcação de concluído com um clique.</li>
+    <li><strong>Vínculo com o processo</strong> e com o cliente.</li>
+    <li><strong>Próximos 7 dias</strong> sempre no painel inicial.</li>
+  </ul>
+  <div class="rodape"><span>Perussi Advogados · Site e sistema</span><span>9</span></div>
+</section>
+
+<section class="pg final">
+  <h2>Próximos passos</h2>
+  <p class="lead">O sistema foi pensado para crescer junto com o escritório. Depois de entrar no ar, ele pode ganhar novas funções conforme a necessidade.</p>
+  <h3>Melhorias possíveis</h3>
+  <ul class="lista prox">
+    <li><strong>Datajud automático</strong> todos os dias, com aviso por e-mail ou WhatsApp.</li>
+    <li><strong>Documentos</strong> anexados a cada cliente e processo.</li>
+    <li><strong>Financeiro:</strong> parcelas, recibos e relatório mensal.</li>
+    <li><strong>Cobrança por Pix e boleto.</strong></li>
+    <li><strong>Área do cliente</strong> para acompanhar o próprio processo.</li>
+    <li><strong>Outros usuários</strong> (secretária, estagiário) com permissões.</li>
+    <li><strong>Blog de artigos</strong> para aparecer mais no Google.</li>
+    <li><strong>Relatórios</strong> de contatos e de origem dos clientes.</li>
+  </ul>
+  <div class="caixa">
+    <h3>Veja funcionando</h3>
+    <p>Versão de demonstração com dados fictícios:<br><a href="https://tibazera.github.io/perussiadvogados/">tibazera.github.io/perussiadvogados</a></p>
+    <p style="margin:0">O sistema fica no link "Área restrita", no rodapé do site.</p>
+  </div>
+  <div class="rodape"><span>Perussi Advogados · Site e sistema</span><span>10</span></div>
+</section>
+
+</body>
+</html>
