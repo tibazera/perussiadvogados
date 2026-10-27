@@ -29,3 +29,8 @@ Coloque a foto em `static/img/paulo.jpg` (ou .png/.webp), de preferência vertic
 ## Versão de demonstração (estática)
 `python scripts/gerar_demo.py` gera em `docs/` o site + CRM com dados fictícios, sem servidor.
 Para publicar: GitHub → Settings → Pages → *Deploy from a branch* → escolha o branch e a pasta `/docs`.
+
+## Testar online (Render, gratuito)
+1. render.com → New → Blueprint → conecte este repositório e escolha o branch.
+2. Informe `ADMIN_PASSWORD` quando pedir. O resto já vem do `render.yaml`.
+3. No plano gratuito os dados são apagados quando o serviço reinicia: serve para teste, não para uso real.
